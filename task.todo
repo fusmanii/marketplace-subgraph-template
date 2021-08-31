@@ -1,0 +1,8 @@
+TODO:
+    ✔ Add hardhat support to the repo @done(21-08-31 18:21)
+    ✔ Compile and deploy the contract to rinkeby (or any other testnet) @done(21-08-31 18:22)
+    ✔ Verify the smart contract in etherscan @done(21-08-31 18:22)
+    ✔ Create a subgraph with the deployed smart contract address @done(21-08-31 18:22)
+    ✔ Define the GraphGL schemas @done(21-08-31 18:22)
+    ✔ Create the subgraph mappings @done(21-08-31 18:22)
+    ✔ Deploy the subgraph to the subgraph studio @done(21-08-31 18:22)

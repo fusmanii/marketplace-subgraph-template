@@ -1,0 +1,14 @@
+# compiled output
+/node_modules
+
+# OS
+.DS_Store
+
+# The Graph
+build/
+generated/
+node_modules
+
+#Hardhat files
+cache
+artifacts

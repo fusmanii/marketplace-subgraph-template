@@ -1,0 +1,54 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Marketplace
+    network: rinkeby
+    source:
+      address: "0xfB80C874b1C8C94414653E93E855Ab00c8743f5f"
+      abi: Marketplace
+      startBlock: 9098376
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - AuctionCancelled
+        - AuctionClaimed
+        - AuctionCreated
+        - BidPlaced
+        - ListingCancelled
+        - ListingCreated
+        - ListingPriceChanged
+        - RoleAdminChanged
+        - RoleGranted
+        - RoleRevoked
+        - SaleMade
+      abis:
+        - name: Marketplace
+          file: ./abis/Marketplace.json
+      eventHandlers:
+        - event: AuctionCancelled(uint256)
+          handler: handleAuctionCancelled
+        - event: AuctionClaimed(address,uint256)
+          handler: handleAuctionClaimed
+        - event: AuctionCreated(address,address,uint256,uint256,uint256,uint256,uint256,uint256,uint256,bool,bool)
+          handler: handleAuctionCreated
+        - event: BidPlaced(address,uint256,uint256,bool)
+          handler: handleBidPlaced
+        - event: ListingCancelled(uint256)
+          handler: handleListingCancelled
+        - event: ListingCreated(address,address,uint256,uint256,uint256,uint256,bool)
+          handler: handleListingCreated
+        - event: ListingPriceChanged(uint256,uint256)
+          handler: handleListingPriceChanged
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: SaleMade(address,uint256,uint256)
+          handler: handleSaleMade
+      file: ./src/mapping.ts

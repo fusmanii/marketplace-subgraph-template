@@ -1,0 +1,41 @@
+type Auction @entity {
+  id: ID!
+  seller: Bytes!
+  tokenAddress: Bytes!
+  tokenId: BigInt!
+  tokenAmount: BigInt!
+  startingEthPrice: BigInt!
+  startingStarsPrice: BigInt!
+  start: BigInt!
+  end: BigInt!
+  allowStarsBids: Boolean!
+  allowEthBids: Boolean!
+  winner: Bytes
+  bids: [Bid!] @derivedFrom(field: "auction")
+}
+
+type Listing @entity {
+  id: ID!
+  seller: Bytes!
+  tokenAddress: Bytes!
+  tokenId: BigInt!
+  tokenAmount: BigInt!
+  price: BigInt!
+  isStarsListing: Boolean!
+}
+
+type Bid @entity {
+  id: ID!
+  bidder: Bytes!
+  amount: BigInt!
+  auction: Auction!
+}
+
+type Sale @entity {
+  id: ID!
+  buyer: Bytes!
+  listingID: BigInt!
+  tokenAmount: BigInt!
+}
+
+
